@@ -11,5 +11,15 @@
 - Webpack support for including and autoprefixing CSS. Instead of adding the dependencies to `package.json` manually, you can install them from the command line:
     + `npm install --save classnames`
     + `npm install --save-dev css-loader style-loader autoprefixer-loader`
+
 ###Unit Testing Setup###
-- Using [jsdom](https://github.com/tmpvar/jsdom) and [testing with jsdom](http://jaketrent.com/post/testing-react-with-jsdom/).
+- Use Mocha and Chai: `npm install --save-dev mocha chai`
+- Using [jsdom](https://github.com/tmpvar/jsdom) and [testing with jsdom](http://jaketrent.com/post/testing-react-with-jsdom/): `npm install --save-dev jsdom`
+- Add Chai expectation support for Immutable
+    + `npm install --save immutable`
+    + `npm install --save-dev chai-immutable`
+
+
+###React and react-hot-loader###
+- Add react: `npm install --save-dev react`
+- Add react-hot-loader to make development workflow faster by reloading code for us without losing the current state of the app: `npm install --save-dev react-hot-loader`
