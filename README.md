@@ -30,3 +30,8 @@ We can (re)start the development server with `webpack-dev-server` and see a mess
 
 - Rename `.js` files to `.jsx`
 - Start with `Voting` component and render to `div#app` at `src/index.jsx`
+- Set up first unit test `Voting_spec.jsx` to test that the component renders those buttons based on the `pair` prop
+    + To render a component in a unit test, use the helper function `renderIntoDocument` from `react/addons`
+    + Once the component renders, we can use another React helper function `scryRenderedDOMComponentsWithTag` to find the `button` elements we expect there to be
+    + We can simulate a click using `Simulate`
+    + Run the test with `npm run test`

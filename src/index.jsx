@@ -9,5 +9,7 @@ require('./style.css');
 const pair = ['Batman Begins', 'The Dark Knight'];
 
 ReactDOM.render(
-  <Voting pair={pair} />, document.getElementById('app')
+  <Voting pair={pair}
+          winner="The Dark Knight" />,
+  document.getElementById('app')
 );
