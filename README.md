@@ -35,3 +35,8 @@ We can (re)start the development server with `webpack-dev-server` and see a mess
     + Once the component renders, we can use another React helper function `scryRenderedDOMComponentsWithTag` to find the `button` elements we expect there to be
     + We can simulate a click using `Simulate`
     + Run the test with `npm run test`
+
+###Immutable Data and Pure Rendering###
+If we use immutable data, we get a very pratical benefit when pairing it with React. Namely, if we only use immutable data in component props and write the component as a pure component, we can have React use a more efficient strategy for detecting changes in props! 
+We can apply the [PureRenderMixin](https://facebook.github.io/react/docs/pure-render-mixin.html). It changes how React checks for changes in the component's props and state by using the faster shallow comparison.
+To make the tests pass and avoid deep checks, install the package for PureRenderMixin: `npm install --save react-addons-pure-render-mixin`
