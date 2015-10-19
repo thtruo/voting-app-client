@@ -23,3 +23,10 @@
 ###React and react-hot-loader###
 - Add react: `npm install --save-dev react`
 - Add react-hot-loader to make development workflow faster by reloading code for us without losing the current state of the app: `npm install --save-dev react-hot-loader`
+
+We can (re)start the development server with `webpack-dev-server` and see a message about Hot Module Replacement being enabled in the console.
+
+##Writing UI Components##
+
+- Rename `.js` files to `.jsx`
+- Start with `Voting` component and render to `div#app` at `src/index.jsx`
