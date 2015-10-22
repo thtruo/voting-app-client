@@ -37,6 +37,15 @@ We can (re)start the development server with `webpack-dev-server` and see a mess
     + Run the test with `npm run test`
 
 ###Immutable Data and Pure Rendering###
-If we use immutable data, we get a very pratical benefit when pairing it with React. Namely, if we only use immutable data in component props and write the component as a pure component, we can have React use a more efficient strategy for detecting changes in props! 
+If we use immutable data, we get a very pratical benefit when using it with React. That is, if we only use immutable data in component props and write the component as a pure component, React can use a more efficient strategy for detecting changes in props! 
 We can apply the [PureRenderMixin](https://facebook.github.io/react/docs/pure-render-mixin.html). It changes how React checks for changes in the component's props and state by using the faster shallow comparison.
 To make the tests pass and avoid deep checks, install the package for PureRenderMixin: `npm install --save react-addons-pure-render-mixin`
+
+For now, the `App` component is an exception to this rule because it would cause route changes not to fire.
+
+##Writing the UI for Results and Routing##
+The voting screen should be set at the root path `#/` and the results screen should be set at the `#/results` path. 
+We'll use [react-router](https://github.com/rackt/react-router/tree/master/docs) to associate different components to different paths. We'll add it to the project `npm install --save react-router@1.0.0-rc3`
+We configure the route paths in `index.jsx` by calling `react-router`'s `Route` and `Router` components. There is more this library can do, but this is all we take away from it.
+
+
