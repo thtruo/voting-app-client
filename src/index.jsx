@@ -4,9 +4,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Router, {Route} from 'react-router';
 import {createStore} from 'redux';
+import {Provider} from 'react-redux';
 import reducer from './reducer';
 import App from './components/App';
-import Voting from './components/Voting';
+import {VotingContainer} from './components/Voting';
+import {ResultsContainer} from './components/Results';
 import Results from './components/Results';
 
 require('./style.css');
@@ -23,11 +25,13 @@ store.dispatch({
 });
 
 const routes = <Route component={App}>
-  <Route path="/results" component={Results}></Route>
-  <Route path="/" component={Voting}></Route>
+  <Route path="/results" component={ResultsContainer}></Route>
+  <Route path="/" component={VotingContainer}></Route>
 </Route>;
 
 ReactDOM.render(
-  <Router>{routes}</Router>,
+  <Provider store={store}>
+    <Router>{routes}</Router>
+  </Provider>,
   document.getElementById('app')
 );
