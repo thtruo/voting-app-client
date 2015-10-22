@@ -48,4 +48,16 @@ The voting screen should be set at the root path `#/` and the results screen sho
 We'll use [react-router](https://github.com/rackt/react-router/tree/master/docs) to associate different components to different paths. We'll add it to the project `npm install --save react-router@1.0.0-rc3`
 We configure the route paths in `index.jsx` by calling `react-router`'s `Route` and `Router` components. There is more this library can do, but this is all we take away from it.
 
+##Client-Side Redux Store##
+Redux is designed as a state container for UI apps. Thinking through the shape of the client state tree, we should take into account the sources of state change:
+- User actions (clicks on vote buttons and the next button)
+- The Server's current `state` payload
+
+The server's state tree looks very similar to the client's state tree - thi is intentionally designed. 
+We know the server is set up to send the current state. We need to write code to receive it and merge it into the client's state.
+
+To proceed, we add unit tests. We expect that, given an action, a reducer merges its payload into the current state.
+
+With an initial implementation of the reducer, we can spin up a Redux store by adding it `npm install --save redux` and set up the store in `index.jsx`.
+
 
