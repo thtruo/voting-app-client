@@ -54,4 +54,69 @@ describe('reducer', () => {
     }));
   });
 
+   it('handles VOTE by setting hasVoted', () => {
+    const state = fromJS({
+      vote: {
+        pair: ['Star Wars', 'Halo 5'],
+        tally: {'Halo 5': 117}
+      }
+    });
+    const action = {type:'VOTE', entry: 'Halo 5'};
+    const nextState = reducer(state, action);
+
+    expect(nextState).to.equal(fromJS({
+      vote: {
+        pair: ['Star Wars', 'Halo 5'],
+        tally: {'Halo 5': 117}
+      },
+      hasVoted: 'Halo 5'
+    }));
+
+   });
+
+   it('does not set hasVoted for VOTE on invalid entry', () => {
+    const state = fromJS({
+      vote: {
+        pair: ['Star Wars', 'Halo 5'],
+        tally: {'Halo 5': 117}
+      }
+    });
+    const action = {
+      type:'VOTE',
+      entry: 'Batman v Superman'
+    };
+    const nextState = reducer(state, action);
+
+    expect(nextState).to.equal(fromJS({
+      vote: {
+        pair: ['Star Wars', 'Halo 5'],
+        tally: {'Halo 5': 117}
+      }
+    }));
+   });
+
+   it('removes hasVoted on SET_STATE if pair changes', () => {
+    const initialState = fromJS({
+      vote: {
+        pair: ['Star Wars', 'Halo 5'],
+        tally: {'Halo 5': 117}
+      },
+      hasVoted: 'Halo 5'
+    });
+    const action = {
+      type:'SET_STATE',
+      state: {
+        vote: {
+          pair: ['Batman v Superman', 'Suicide Squad']
+        }
+      }
+    };
+    const nextState = reducer(initialState, action);
+
+    expect(nextState).to.equal(fromJS({
+      vote: {
+        pair: ['Batman v Superman', 'Suicide Squad']
+      }
+    }));
+   });
 });
