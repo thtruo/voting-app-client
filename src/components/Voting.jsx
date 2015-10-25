@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import classNames from 'classnames';
 import Vote from './Vote';
 import Winner from './Winner';
+import * as actionCreators from '../action_creators';
 
 /* Pure component */
 export const Voting = React.createClass({
@@ -25,5 +26,9 @@ function mapStateToProps(state) {
   }
 }
 
-/* Smart connected component */
-export const VotingContainer = connect(mapStateToProps)(Voting);
+/* Smart connected component. Adding `actionCreators` to `connect` causes
+ * a `vote` prop to be given to the `Voting` component.
+ */
+export const VotingContainer = connect(
+  mapStateToProps,
+  actionCreators)(Voting);
