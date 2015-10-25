@@ -60,4 +60,19 @@ To proceed, we add unit tests. We expect that, given an action, a reducer merges
 
 With an initial implementation of the reducer, we can spin up a Redux store by adding it `npm install --save redux` and set up the store in `index.jsx`.
 
+There are three broad things to do:
+0. Setting up the Socket.io client
+1. Receiving actions from the server
+2. Dispatching actions from React components
+3. Sending actions to the server using Redux [Middleware](http://rackt.org/redux/docs/advanced/Middleware.html)
+
+###Redux Middleware###
+Middleware is a function that provides a generic way to tap into actions that are being dispatched to Redux stores. 
+Note the difference between Redux middleware and Redux listeners; they are different tools for different purposes.
+- Middleware functions are called before an action hits the store, and they may affect what happens to the action. 
+- Listeners are called after an action has been dispatched, and they can't really do anything about it. 
+
+We'll proceed to create a remote action middleware that causes an action to dispatch to the original store and a remote store using a Socket.io connection.
+1. Set up skeleton for middleware in `src/remote_action_middleware.js`
+2. Plug in middleware into the Redux store in `src/index.jsx` to log actions
 
