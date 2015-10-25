@@ -29,6 +29,5 @@ function mapStateToProps(state) {
 /* Smart connected component. Adding `actionCreators` to `connect` causes
  * a `vote` prop to be given to the `Voting` component.
  */
-export const VotingContainer = connect(
-  mapStateToProps,
-  actionCreators)(Voting);
+export const VotingContainer =
+  connect(mapStateToProps, actionCreators)(Voting);
