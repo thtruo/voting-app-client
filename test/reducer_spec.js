@@ -54,9 +54,10 @@ describe('reducer', () => {
     }));
   });
 
-   it('handles VOTE by setting hasVoted', () => {
+   it('handles VOTE by setting myVote', () => {
     const state = fromJS({
       vote: {
+        round: 343,
         pair: ['Star Wars', 'Halo 5'],
         tally: {'Halo 5': 117}
       }
@@ -66,17 +67,23 @@ describe('reducer', () => {
 
     expect(nextState).to.equal(fromJS({
       vote: {
+        round: 343,
         pair: ['Star Wars', 'Halo 5'],
         tally: {'Halo 5': 117}
       },
-      hasVoted: 'Halo 5'
+      hasVoted: 'Halo 5',
+      myVote: {
+        round: 343,
+        entry: 'Halo 5'
+      }
     }));
 
    });
 
-   it('does not set hasVoted for VOTE on invalid entry', () => {
+   it('does not set myVote for VOTE on invalid entry', () => {
     const state = fromJS({
       vote: {
+        round: 343,
         pair: ['Star Wars', 'Halo 5'],
         tally: {'Halo 5': 117}
       }
@@ -89,25 +96,32 @@ describe('reducer', () => {
 
     expect(nextState).to.equal(fromJS({
       vote: {
+        round: 343,
         pair: ['Star Wars', 'Halo 5'],
         tally: {'Halo 5': 117}
       }
     }));
    });
 
-   it('removes hasVoted on SET_STATE if pair changes', () => {
+   it('removes myVote on SET_STATE if round changes', () => {
     const initialState = fromJS({
       vote: {
+        round: 343,
         pair: ['Star Wars', 'Halo 5'],
         tally: {'Halo 5': 117}
       },
-      hasVoted: 'Halo 5'
+      hasVoted: 'Halo 5',
+      myVote: {
+        round: 343,
+        entry: 'Halo 5'
+      }
     });
     const action = {
       type:'SET_STATE',
       state: {
         vote: {
-          pair: ['Batman v Superman', 'Suicide Squad']
+          round: 344,
+          pair: ['Batman v Superman', 'Halo 5']
         }
       }
     };
@@ -115,7 +129,8 @@ describe('reducer', () => {
 
     expect(nextState).to.equal(fromJS({
       vote: {
-        pair: ['Batman v Superman', 'Suicide Squad']
+        round: 344,
+        pair: ['Batman v Superman', 'Halo 5']
       }
     }));
    });
