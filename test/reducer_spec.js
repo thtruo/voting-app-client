@@ -71,7 +71,6 @@ describe('reducer', () => {
         pair: ['Star Wars', 'Halo 5'],
         tally: {'Halo 5': 117}
       },
-      hasVoted: 'Halo 5',
       myVote: {
         round: 343,
         entry: 'Halo 5'
@@ -110,7 +109,6 @@ describe('reducer', () => {
         pair: ['Star Wars', 'Halo 5'],
         tally: {'Halo 5': 117}
       },
-      hasVoted: 'Halo 5',
       myVote: {
         round: 343,
         entry: 'Halo 5'
@@ -132,6 +130,19 @@ describe('reducer', () => {
         round: 344,
         pair: ['Batman v Superman', 'Halo 5']
       }
+    }));
+   });
+
+   it('handles SET_CLIENT_ID', () => {
+    const initialState = Map();
+    const action = {
+      type: 'SET_CLIENT_ID',
+      clientId: '1234wxyz'
+    };
+    const nextState = reducer(initialState, action);
+
+    expect(nextState).to.equal(fromJS({
+      clientId: '1234wxyz'
     }));
    });
 });

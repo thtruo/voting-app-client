@@ -77,4 +77,5 @@ We'll proceed to create a remote action middleware that causes an action to disp
 2. Plug in middleware into the Redux store in `src/index.jsx` to log actions
 
 
-
+##Prevent Duplicate Votes by the Same User##
+Use the [uuid](https://www.npmjs.com/package/node-uuid) package along with [object-assign](https://www.npmjs.com/package/object-assign) to generate unique ids for each user and track who has voted what on the server.
